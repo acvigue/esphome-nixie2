@@ -35,8 +35,7 @@ CONFIG_SCHEMA = cv.All(
         }
     )
     .extend(cv.COMPONENT_SCHEMA)
-    .extend(spi.spi_device_schema(cs_pin_required=False)),
-    msg='Either "data_pin" and "clock_pin" must be set or "spi_id" must be set.',
+    .extend(spi.spi_device_schema(cs_pin_required=False))
 )
 
 
