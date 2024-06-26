@@ -14,8 +14,6 @@ namespace esphome {
       this->spi_setup();
       this->oe_pin_->setup();
       this->oe_pin_->digital_write(false);
-      this->enable();
-
 
       //fill output_bytes_ with 1
       for (auto& byte : this->output_bytes_)
