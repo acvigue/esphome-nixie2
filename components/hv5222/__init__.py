@@ -32,13 +32,7 @@ CONFIG_SCHEMA = cv.Any(
             cv.Required(CONF_OE_PIN): pins.gpio_output_pin_schema,
             cv.Optional(CONF_COUNT, default=1): cv.int_range(min=1, max=4),
         }
-    )
-    .extend(cv.COMPONENT_SCHEMA)
-    .extend(
-        {
-            cv.Required(CONF_SPI_ID): cv.use_id(spi.SPIComponent),
-        }
-    ),
+    ).extend(cv.COMPONENT_SCHEMA),
     msg='Either "data_pin" and "clock_pin" must be set or "spi_id" must be set.',
 )
 
