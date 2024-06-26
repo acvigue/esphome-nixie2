@@ -18,7 +18,7 @@ namespace esphome {
       void setup() override;
       void dump_config() override;
       float get_setup_priority() const override { return setup_priority::IO; }
-      void set_latch_pin(GPIOPin* pin) { this->latch_pin_ = pin; }
+      void set_oe_pin(GPIOPin* pin) { this->oe_pin_ = pin; }
       void set_chip_count(uint8_t count) {
         this->chip_count_ = count;
         this->max_pins_ = count * 4;
@@ -31,7 +31,7 @@ namespace esphome {
       void digital_write_(uint16_t pint, bool value);
       void write_bytes();
 
-      GPIOPin* latch_pin_;
+      GPIOPin* oe_pin_;
       uint8_t chip_count_;
       uint8_t max_pins_;
       std::vector<uint8_t> output_bytes_;

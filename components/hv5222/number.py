@@ -8,7 +8,7 @@ from esphome.const import (
 )
 
 DEPENDENCIES = ["hv5222"]
-CODEOWNERS = ["@lylavoie"]
+CODEOWNERS = ["@acvigue"]
 
 CONF_COUNT_BACK = "count_back"
 CONF_COUNT_BACK_SPEED = "count_back_speed"

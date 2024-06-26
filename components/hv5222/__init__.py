@@ -23,13 +23,13 @@ HV5222Pin = HV5222_ns.class_(
 )
 
 CONF_HV5222 = "hv5222"
-CONF_LATCH_PIN = "latch_pin"
+CONF_OE_PIN = "oe_pin"
 
 CONFIG_SCHEMA = cv.Any(
     cv.Schema(
         {
             cv.Required(CONF_ID): cv.declare_id(HV5222component),
-            cv.Required(CONF_LATCH_PIN): pins.gpio_output_pin_schema,
+            cv.Required(CONF_OE_PIN): pins.gpio_output_pin_schema,
             cv.Optional(CONF_COUNT, default=1): cv.int_range(min=1, max=4),
         }
     )
@@ -48,8 +48,8 @@ async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
     await cg.register_component(var, config)
     await spi.register_spi_device(var, config)
-    latch_pin = await cg.gpio_pin_expression(config[CONF_LATCH_PIN])
-    cg.add(var.set_latch_pin(latch_pin))
+    oe_pin = await cg.gpio_pin_expression(config[CONF_OE_PIN])
+    cg.add(var.set_latch_pin(oe_pin))
     cg.add(var.set_chip_count(config[CONF_COUNT]))
 
 
