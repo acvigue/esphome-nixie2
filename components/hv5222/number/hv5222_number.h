@@ -3,7 +3,7 @@
 #include "esphome/core/helpers.h"
 #include "esphome/core/component.h"
 #include "esphome/components/number/number.h"
-#include "hv5222.h"
+#include "../hv5222.h"
 #include <vector>
 
 namespace esphome {
