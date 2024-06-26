@@ -14,6 +14,11 @@ namespace esphome {
       this->spi_setup();
       this->oe_pin_->setup();
       this->oe_pin_->digital_write(false);
+
+      //fill output_bytes_ with 1
+      for (auto& byte : this->output_bytes_)
+        byte = 0xFF;
+
       this->write_bytes();
     }
 
@@ -25,7 +30,7 @@ namespace esphome {
           (this->max_pins_ * 8));
         return;
       }
-      if (value) {
+      if (!value) {
         this->output_bytes_[(this->max_pins_) - (pin / 8) - 1] |= (1 << (pin % 8));
       }
       else {
