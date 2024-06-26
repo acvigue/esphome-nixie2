@@ -25,13 +25,19 @@ HV5222Pin = HV5222_ns.class_(
 CONF_HV5222 = "hv5222"
 CONF_OE_PIN = "oe_pin"
 
-CONFIG_SCHEMA = cv.Schema(
-    {
-        cv.Required(CONF_ID): cv.declare_id(HV5222component),
-        cv.Required(CONF_OE_PIN): pins.gpio_output_pin_schema,
-        cv.Optional(CONF_COUNT, default=1): cv.int_range(min=1, max=4),
-    }
-).extend(cv.COMPONENT_SCHEMA)
+CONFIG_SCHEMA = cv.All(
+    cv.Schema(
+        {
+            cv.Required(CONF_ID): cv.declare_id(HV5222component),
+            cv.Required(CONF_OE_PIN): pins.gpio_output_pin_schema,
+            cv.Optional(CONF_COUNT, default=1): cv.int_range(min=1, max=4),
+            cv.Required(CONF_SPI_ID): cv.use_id(spi.SPIComponent),
+        }
+    )
+    .extend(cv.COMPONENT_SCHEMA)
+    .extend(spi.spi_device_schema(cs_pin_required=False)),
+    msg='Either "data_pin" and "clock_pin" must be set or "spi_id" must be set.',
+)
 
 
 async def to_code(config):
