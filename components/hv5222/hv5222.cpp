@@ -14,6 +14,8 @@ namespace esphome {
       this->spi_setup();
       this->oe_pin_->setup();
       this->oe_pin_->digital_write(false);
+      this->enable();
+
 
       //fill output_bytes_ with 1
       for (auto& byte : this->output_bytes_)
@@ -22,6 +24,7 @@ namespace esphome {
       //set first byte to 0b11111110
       this->output_bytes_[0] = 0xFE;
 
+      this->write_bytes();
       this->write_bytes();
     }
 
