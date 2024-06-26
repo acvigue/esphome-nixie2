@@ -46,7 +46,7 @@ namespace esphome {
       this->write_array(this->output_bytes_);
       this->disable();
       ESP_LOGV(TAG, "OE high");
-      this->oe_pin_->digital_write(true);
+      this->oe_pin_->digital_write(false);
     }
 
     void HV5222Pin::digital_write(bool value) { this->parent_->digital_write_(this->pin_, value != this->inverted_); }
