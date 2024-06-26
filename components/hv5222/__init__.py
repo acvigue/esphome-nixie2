@@ -34,7 +34,6 @@ CONFIG_SCHEMA = cv.Any(
         }
     )
     .extend(cv.COMPONENT_SCHEMA)
-    .extend(spi.spi_device_schema(cs_pin_required=False))
     .extend(
         {
             cv.Required(CONF_SPI_ID): cv.use_id(spi.SPIComponent),
