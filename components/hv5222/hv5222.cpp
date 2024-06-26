@@ -52,14 +52,6 @@ namespace esphome {
 #endif
       ESP_LOGV(TAG, "OE off");
       this->oe_pin_->digital_write(true);
-
-      //force output array to be 0xFF 0xFF 0xFF 0xFE
-      for (auto& byte : this->output_bytes_)
-        byte = 0xFF;
-
-      //set first byte to 0b11111110
-      this->output_bytes_[0] = 0xFE;
-
       this->write_array(this->output_bytes_);
       ESP_LOGV(TAG, "OE on");
       this->oe_pin_->digital_write(false);
