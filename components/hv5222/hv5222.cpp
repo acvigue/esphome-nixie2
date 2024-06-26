@@ -13,7 +13,7 @@ namespace esphome {
       ESP_LOGD(TAG, "Setting up HV5222 via SPI bus...");
       this->spi_setup();
       this->oe_pin_->setup();
-      this->oe_pin_->digital_write(false);
+      this->oe_pin_->digital_write(true);
       this->write_bytes();
     }
 
@@ -41,7 +41,7 @@ namespace esphome {
         ESP_LOGV(TAG, "  0x%02X", *byte);
 #endif
       ESP_LOGV(TAG, "OE low");
-      this->oe_pin_->digital_write(false);
+      this->oe_pin_->digital_write(true);
       this->enable();
       this->write_array(this->output_bytes_);
       this->disable();
