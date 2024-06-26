@@ -19,6 +19,9 @@ namespace esphome {
       for (auto& byte : this->output_bytes_)
         byte = 0xFF;
 
+      //set last byte to 0x00;
+      this->output_bytes_[(this->chip_count_ * 4) - 1] = 0b01111111; //0x7F
+
       this->write_bytes();
     }
 
