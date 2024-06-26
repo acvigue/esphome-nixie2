@@ -33,7 +33,7 @@ CONFIG_SCHEMA = cv.Any(
             cv.Optional(CONF_COUNT, default=1): cv.int_range(min=1, max=4),
         }
     ).extend(cv.COMPONENT_SCHEMA),
-    msg='Either "data_pin" and "clock_pin" must be set or "spi_id" must be set.',
+    msg='Either "data_pin" and "x" must be set or "spi_id" must be set.',
 )
 
 
