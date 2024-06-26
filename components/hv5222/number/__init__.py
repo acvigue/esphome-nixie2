@@ -1,7 +1,7 @@
 from esphome.components import number
 import esphome.config_validation as cv
 import esphome.codegen as cg
-from . import CONF_HV5222, HV5222_ns, HV5222component
+from .. import CONF_HV5222, HV5222_ns, HV5222component
 from esphome.const import (
     CONF_ID,
     CONF_PINS,
