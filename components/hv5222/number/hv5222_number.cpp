@@ -44,10 +44,10 @@ namespace esphome {
 
     void HV5222NumberComponent::set_outputs_(uint8_t value) {
       for (uint8_t pin : this->pins_) {
-        this->parent_->output_bytes_[this->parent_->max_pins_ - (pin / 8) - 1] &= ~(1 << (pin % 8));
+        this->parent_->output_bytes_[this->parent_->max_pins_ - (pin / 8) - 1] |= (1 << (pin % 8));
       }
-      this->parent_->output_bytes_[this->parent_->max_pins_ - (this->pins_[value] / 8) - 1] |=
-        (1 << (this->pins_[value] % 8));
+      this->parent_->output_bytes_[this->parent_->max_pins_ - (this->pins_[value] / 8) - 1] &=
+        ~(1 << (this->pins_[value] % 8));
       this->parent_->write_bytes();
     }  // HV5222NumberComponent::_set_outputs(uint8_t value)
 
