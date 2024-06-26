@@ -49,7 +49,6 @@ namespace esphome {
       this->parent_->output_bytes_[this->parent_->max_pins_ - (this->pins_[value] / 8) - 1] |=
         (1 << (this->pins_[value] % 8));
       this->parent_->write_bytes();
-      this->parent_->write_bytes();
     }  // HV5222NumberComponent::_set_outputs(uint8_t value)
 
   }  // namespace hv5222

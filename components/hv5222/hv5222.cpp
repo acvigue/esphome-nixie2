@@ -42,9 +42,7 @@ namespace esphome {
 #endif
       ESP_LOGV(TAG, "OE off");
       this->oe_pin_->digital_write(true);
-      this->enable();
       this->write_array(this->output_bytes_);
-      this->disable();
       ESP_LOGV(TAG, "OE on");
       this->oe_pin_->digital_write(false);
     }
