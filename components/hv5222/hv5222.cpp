@@ -12,8 +12,6 @@ namespace esphome {
     void HV5222component::setup() {
       ESP_LOGD(TAG, "Setting up HV5222 via SPI bus...");
       this->spi_setup();
-      this->oe_pin_->setup();
-      this->oe_pin_->digital_write(false);
 
       //fill output_bytes_ with 1
       for (auto& byte : this->output_bytes_)
@@ -48,11 +46,7 @@ namespace esphome {
       for (auto byte = this->output_bytes_.rbegin(); byte != this->output_bytes_.rend(); ++byte)
         ESP_LOGV(TAG, "  0x%02X", *byte);
 #endif
-      ESP_LOGV(TAG, "OE off");
-      this->oe_pin_->digital_write(true);
       this->write_array(this->output_bytes_);
-      ESP_LOGV(TAG, "OE on");
-      this->oe_pin_->digital_write(false);
     }
 
     void HV5222Pin::digital_write(bool value) { this->parent_->digital_write_(this->pin_, value != this->inverted_); }
