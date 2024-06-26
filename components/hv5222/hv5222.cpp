@@ -21,6 +21,7 @@ namespace esphome {
 
       //set first byte to 0b11111110
       this->output_bytes_[0] = 0xFE;
+      this->output_bytes_[3] = 0xFE;
 
       this->write_bytes();
       this->write_bytes();
