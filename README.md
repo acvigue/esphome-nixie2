@@ -4,6 +4,8 @@ Includes custom component for HV5222 low-side shift register
 
 Read more [here](https://vigue.me/s/vixen)
 
+Altium 3D Viewer & Assembly Preview: [here](https://365.altium.com/files/F7F2C198-6388-416A-9E94-9685C6B443AA)
+
 Example configuration:
 
 ```yaml
