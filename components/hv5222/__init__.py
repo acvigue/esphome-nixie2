@@ -55,7 +55,7 @@ HV5222_PIN_SCHEMA = pins.gpio_base_schema(
     cv.int_range(min=0, max=128),
     modes=[CONF_OUTPUT],
     mode_validator=_validate_output_mode,
-    invertable=True,
+    invertible=True,
 ).extend(
     {
         cv.Required(CONF_HV5222): cv.use_id(HV5222component),
